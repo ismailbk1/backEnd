@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.pfe.rhbackend.dto.RetraiteDto;
 import tn.pfe.rhbackend.model.Retraite;
 import tn.pfe.rhbackend.service.RetraiteService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/retraites")
+@RequestMapping("/api/retraites")
 public class RetraiteController {
 
     private final RetraiteService retraiteService;
@@ -22,8 +23,8 @@ public class RetraiteController {
 
     // Endpoint pour créer une retraite
     @PostMapping
-    public ResponseEntity<Retraite> createRetraite(@RequestBody Retraite retraite) {
-        Retraite createdRetraite = retraiteService.createRetraite(retraite);
+    public ResponseEntity<Retraite> createRetraite(@RequestBody RetraiteDto retraiteDto) {
+        Retraite createdRetraite = retraiteService.createRetraite(retraiteDto);
         return new ResponseEntity<>(createdRetraite, HttpStatus.CREATED);
     }
 
