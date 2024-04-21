@@ -1,10 +1,12 @@
 package tn.pfe.rhbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="agent")
-public class Agent {
+public class Agent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_agent ;
@@ -31,25 +33,32 @@ public class Agent {
     private LocalDate date_debut_position;
 
     //@ManyToOne, ce qui signifie qu'un objet Agent est associé à un seul objet Grade
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "code_grade ")
     private Grade grade;
 
     // agent associéà une seul position
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "code_position ")
     private Position position;
 
     //demande
     @OneToMany(mappedBy = "agent")
+    @JsonIgnore
+
     private List<Demande> demandes;
 
     //residence
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "code_residence")
     private Residence residence;
 
     @OneToMany(mappedBy = "agent")
+    @JsonIgnore
+
     private List<Conge> conges;
 
 

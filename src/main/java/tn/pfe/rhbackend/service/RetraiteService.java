@@ -1,8 +1,12 @@
 package tn.pfe.rhbackend.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.pfe.rhbackend.dto.RetraiteDto;
 import tn.pfe.rhbackend.model.Retraite;
+import tn.pfe.rhbackend.repository.AgentRepository;
+import tn.pfe.rhbackend.repository.ResidenceRepository;
 import tn.pfe.rhbackend.repository.RetraiteRepository;
 
 import java.util.List;
@@ -12,14 +16,31 @@ import java.util.Optional;
 public class RetraiteService {
 
     private final RetraiteRepository retraiteRepository;
+    private final AgentRepository agentRepository;
+    private final ResidenceRepository residenceRepository;
+
 
     @Autowired
-    public RetraiteService(RetraiteRepository retraiteRepository) {
+    public RetraiteService(RetraiteRepository retraiteRepository, AgentRepository agentRepository, ResidenceRepository residenceRepository) {
         this.retraiteRepository = retraiteRepository;
+        this.agentRepository = agentRepository;
+        this.residenceRepository = residenceRepository;
     }
 
     // Create
-    public Retraite createRetraite(Retraite retraite) {
+    public Retraite createRetraite(RetraiteDto retraiteDto) {
+        Retraite retraite=new Retraite();
+        retraite.setAgent(agentRepository.findById(retraiteDto.getAgent()).get());
+        retraite.setResidence(residenceRepository.findByIdresidence(retraiteDto.getCodeResidence()));
+        retraite.setStatus(retraiteDto.getStatus());
+        retraite.setType_retraite(retraiteDto.getTypeRetraite());
+        retraite.setDate_depart_persivible(retraiteDto.getDateDepartPreversible());
+        retraite.setDate_demande(retraiteDto.getDateDemande());
+        retraite.setMotif_depart(retraiteDto.getMotif());
+
+
+
+
         return retraiteRepository.save(retraite);
     }
 
