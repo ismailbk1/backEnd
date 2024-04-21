@@ -23,8 +23,10 @@ import java.util.Date;
     @Enumerated(EnumType.STRING)
     private Status status;
     private String motif_depart;
+
    @JsonFormat(pattern = "yyyy-MM-dd")
    private Date date_demande;
+
    @JsonFormat(pattern = "yyyy-MM-dd")
    private Date date_depart_persivible;
 
