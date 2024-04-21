@@ -1,5 +1,6 @@
 package tn.pfe.rhbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class Position  {
     private Integer idposition ;
     private  Integer code_position ;
     private String libelle ;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "position", cascade = CascadeType.ALL)
     private List<Agent> agents;
 

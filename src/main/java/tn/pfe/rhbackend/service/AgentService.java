@@ -26,7 +26,7 @@ public class AgentService {
     public List<Agent> getAllAgents() {
 
        List<Agent> agents=agentRepository.findAll();
-      // System.out.println(agents);
+     //  System.out.println(agents);
         return agents;
     }
 

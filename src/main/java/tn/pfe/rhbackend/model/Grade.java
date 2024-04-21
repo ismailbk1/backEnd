@@ -1,5 +1,6 @@
 package tn.pfe.rhbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class Grade {
     private Integer idgrade ;
     private  Integer code_grade ;
     private String libelle ;
-
+@JsonIgnore
     //@OneToMany(mappedBy = "grade"), ce qui signifie qu'un objet Grade peut avoir plusieurs objets Agent
     @OneToMany(mappedBy = "grade", cascade = CascadeType.ALL)
     private List<Agent> agents;

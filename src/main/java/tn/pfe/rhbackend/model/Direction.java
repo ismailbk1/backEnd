@@ -18,10 +18,12 @@ public class Direction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer iddirection ;
+    @Column(unique = true) // Assurez-vous que code_direction est unique
     private  Integer code_direction ;
     private String libelle ;
 
     //
+
     @OneToMany(mappedBy = "direction")
     private List<Residence> residences;
 }

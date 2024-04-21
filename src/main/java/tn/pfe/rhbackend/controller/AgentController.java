@@ -20,7 +20,9 @@ public class AgentController {
 
     @GetMapping("/getAgents")
     public List<Agent> getAllAgents() {
+
         return agentService.getAllAgents();
+
     }
 
     @GetMapping("/{id_agent}")

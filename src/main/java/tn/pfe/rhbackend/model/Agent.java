@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Data
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="agent")
@@ -33,14 +35,14 @@ public class Agent implements Serializable {
     private LocalDate date_debut_position;
 
     //@ManyToOne, ce qui signifie qu'un objet Agent est associé à un seul objet Grade
-    @JsonIgnore
+   // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "code_grade ")
     private Grade grade;
 
     // agent associéà une seul position
     @ManyToOne
-    @JsonIgnore
+
     @JoinColumn(name = "code_position ")
     private Position position;
 
@@ -51,7 +53,7 @@ public class Agent implements Serializable {
     private List<Demande> demandes;
 
     //residence
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "code_residence")
     private Residence residence;
