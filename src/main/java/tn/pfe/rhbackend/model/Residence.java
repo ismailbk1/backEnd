@@ -17,6 +17,7 @@ public class Residence {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idresidence ;
     private Integer code_residence;
+    private String libelle;
 
 
     //résidence avec agent

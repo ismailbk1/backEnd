@@ -3,7 +3,11 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+# Ignore application properties
+application.properties
 
+# Ignore Maven project object model file
+pom.xml
 ### STS ###
 .apt_generated
 .classpath

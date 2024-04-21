@@ -24,7 +24,10 @@ public class AgentService {
     @Autowired
     private ResidenceRepository residenceRepository;
     public List<Agent> getAllAgents() {
-        return agentRepository.findAll();
+
+       List<Agent> agents=agentRepository.findAll();
+      // System.out.println(agents);
+        return agents;
     }
 
     public Optional<Agent> getAgentByMatricule(Integer id_agent) {
@@ -55,7 +58,7 @@ public class AgentService {
         Position newPotion =positionRepository.findByIdposition(agent.getCode_position());
        newAgent.setGrade( newGrade);
        newAgent.setPosition(newPotion);
-      // newAgent.setResidence(newResidence);
+       newAgent.setResidence(newResidence);
         System.out.println(newResidence);
                 System.out.println(newPotion);
 return newAgent;
