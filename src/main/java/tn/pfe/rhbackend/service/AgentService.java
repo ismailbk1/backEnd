@@ -68,13 +68,24 @@ public class AgentService {
 return newAgent;
     }
 
-    public Agent updateAgent(Integer id_agent, Agent agent) {
-        if (agentRepository.existsById(id_agent)) {
-            agent.setMatricule_agent(id_agent);
-            return agentRepository.save(agent);
-        }
-        else {
-            return null; // Handle error
+    public Agent updateAgent(Integer id_agent, Agent agentToUpdate) {
+        Optional<Agent> existingAgentOptional = agentRepository.findById(id_agent);
+        if (existingAgentOptional.isPresent()) {
+            Agent existingAgent = existingAgentOptional.get();
+            // Mettre à jour les champs de l'agent existant avec les nouvelles valeurs
+            existingAgent.setMatricule_agent(agentToUpdate.getMatricule_agent());
+            existingAgent.setNomprenom(agentToUpdate.getNomprenom());
+            existingAgent.setSexe(agentToUpdate.getSexe());
+            existingAgent.setPosition(agentToUpdate.getPosition());
+            existingAgent.setResidence(agentToUpdate.getResidence());
+            existingAgent.setSituation_administrative(agentToUpdate.getSituation_administrative());
+            existingAgent.setSituation_familiale(agentToUpdate.getSituation_familiale());
+            existingAgent.setDate_naissance(agentToUpdate.getDate_naissance());
+            existingAgent.setDate_debut_position(agentToUpdate.getDate_debut_position());
+            existingAgent.setDate_entree_en_activite(agentToUpdate.getDate_entree_en_activite());
+            return agentRepository.save(existingAgent);
+        } else {
+            return null;
         }
     }
 

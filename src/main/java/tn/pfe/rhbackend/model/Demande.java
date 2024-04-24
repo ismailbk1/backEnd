@@ -1,6 +1,7 @@
 package tn.pfe.rhbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="demande")
- public  abstract class Demande implements Serializable {
+ public   class Demande implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,15 +30,15 @@ import java.util.Date;
 
    @JsonFormat(pattern = "yyyy-MM-dd")
    private Date date_depart_persivible;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "matricule_agent")
     private Agent agent;
-
+@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "code_residence")
     private Residence residence;
-
+@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "besoin_id")
     private Besoin besoin;

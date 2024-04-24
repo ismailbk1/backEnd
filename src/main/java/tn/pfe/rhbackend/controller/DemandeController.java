@@ -9,33 +9,33 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/demandes")
+@RequestMapping("/api")
 public class DemandeController {
 
     @Autowired
     private DemandeService demandeService;
 
-    @GetMapping("/")
+    @GetMapping("/getDemandes")
     public List<Demande> getAllDemandes() {
         return demandeService.getAllDemandes();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getDemandeById/{id}")
     public Optional<Demande> getDemandeById(@PathVariable Integer id) {
         return demandeService.getDemandeById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/addDemande")
     public Demande addDemande(@RequestBody Demande demande) {
         return demandeService.addDemande(demande);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateDemande/{id}")
     public Demande updateDemande(@PathVariable Integer id, @RequestBody Demande demande) {
         return demandeService.updateDemande(id, demande);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteDemande/{id}")
     public void deleteDemande(@PathVariable Integer id) {
         demandeService.deleteDemande(id);
     }
