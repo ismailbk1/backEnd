@@ -2,6 +2,7 @@ package tn.pfe.rhbackend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.pfe.rhbackend.dto.CongeDto;
 import tn.pfe.rhbackend.model.Conge;
 import tn.pfe.rhbackend.service.CongeService;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/conges")
+@RequestMapping("/api/conges")
 public class CongeController {
     @Autowired
     private CongeService congeService;
@@ -25,13 +26,17 @@ public class CongeController {
     }
 
     @PostMapping
-    public Conge addConge(@RequestBody Conge conge) {
+    public Conge addConge(@RequestBody CongeDto conge) {
         return congeService.addConge(conge);
     }
 
     @PutMapping("/{id}")
     public Conge updateConge(@PathVariable Integer id, @RequestBody Conge updatedConge) {
         return congeService.updateConge(id, updatedConge);
+    }
+    @DeleteMapping("/{id}")
+    public void updateConge(@PathVariable Integer id) {
+         congeService.deleteConge(id);
     }
 }
 

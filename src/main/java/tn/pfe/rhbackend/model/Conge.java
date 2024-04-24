@@ -1,12 +1,10 @@
 package tn.pfe.rhbackend.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity //pour crée table
 @Getter
@@ -19,8 +17,8 @@ public class Conge {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idcongee;
     private String code_conge;
-    private LocalDate date_debut;
-    private LocalDate date_fin;
+    private Date date_debut;
+    private Date date_fin;
     private Integer nb_jour;
     private String type;
 

@@ -30,7 +30,7 @@ import java.util.Date;
 
    @JsonFormat(pattern = "yyyy-MM-dd")
    private Date date_depart_persivible;
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "matricule_agent")
     private Agent agent;
@@ -38,10 +38,7 @@ import java.util.Date;
     @ManyToOne
     @JoinColumn(name = "code_residence")
     private Residence residence;
-@JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "besoin_id")
-    private Besoin besoin;
+
 
 
 
