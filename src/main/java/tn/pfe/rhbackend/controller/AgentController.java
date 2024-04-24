@@ -25,7 +25,7 @@ public class AgentController {
 
     }
 
-    @GetMapping("/{id_agent}")
+    @GetMapping("/getAgentById/{id_agent}")
     public Optional<Agent> getAgentById(@PathVariable Integer id_agent) {
         return agentService.getAgentByMatricule(id_agent);
     }
@@ -37,12 +37,12 @@ public class AgentController {
         return agentService.addAgent(agent);
     }
 
-    @PutMapping("/{id_agent}")
+    @PutMapping("/updateAgent/{id_agent}")
     public Agent updateAgent(@PathVariable Integer id_agent, @RequestBody Agent agent) {
         return agentService.updateAgent(id_agent, agent);
     }
 
-    @DeleteMapping("/{id_agent}")
+    @DeleteMapping("/deleteAgent/{id_agent}")
     public void deleteAgent(@PathVariable Integer id_agent) {
         agentService.deleteAgent(id_agent);
     }

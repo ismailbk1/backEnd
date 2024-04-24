@@ -49,7 +49,9 @@ public class AgentService {
       //  newAgent.setSexe(agent.getSexe());
         if (agent.getSexe()!= null && agent.getSexe().equals(Sexe.MALE)){
             newAgent.setSexe(Sexe.MALE);
-        }newAgent.setSexe(Sexe.FEMALE);
+        }
+        else
+        newAgent.setSexe(Sexe.FEMALE);
 
         newAgent.setDate_debut_position(agent.getDate_debut_position()) ;
         newAgent.setDate_naissance(agent.getDate_naissance());
@@ -59,8 +61,10 @@ public class AgentService {
        newAgent.setGrade( newGrade);
        newAgent.setPosition(newPotion);
        newAgent.setResidence(newResidence);
-        System.out.println(newResidence);
-                System.out.println(newPotion);
+     newAgent.setSituation_familiale(SituationFamiliale.valueOf(agent.getSituation_familiale()));
+     newAgent.setSituation_administrative(SituationAdmin.valueOf(agent.getSituation_administrative()));
+      //System.out.println(newResidence);
+             //   System.out.println(newPotion);
 return newAgent;
     }
 

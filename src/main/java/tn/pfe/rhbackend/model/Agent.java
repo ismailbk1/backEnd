@@ -26,6 +26,7 @@ public class Agent implements Serializable {
     private String nomprenom;
     @Enumerated(EnumType.STRING)
     private Sexe sexe;
+
     @Enumerated(EnumType.STRING)
     private SituationFamiliale situation_familiale;
     @Enumerated(EnumType.STRING)
