@@ -21,7 +21,7 @@ public class CongeController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Conge> getCongeById(@PathVariable Integer id) {
+    public Conge getCongeById(@PathVariable Integer id) {
         return congeService.getCongeById(id);
     }
 
@@ -31,7 +31,7 @@ public class CongeController {
     }
 
     @PutMapping("/{id}")
-    public Conge updateConge(@PathVariable Integer id, @RequestBody Conge updatedConge) {
+    public Conge updateConge(@PathVariable Integer id, @RequestBody CongeDto updatedConge) {
         return congeService.updateConge(id, updatedConge);
     }
     @DeleteMapping("/{id}")

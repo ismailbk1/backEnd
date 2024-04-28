@@ -1,5 +1,6 @@
 package tn.pfe.rhbackend.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.pfe.rhbackend.dto.*;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class CongeService {
     @Autowired
     private CongeRepository congeRepository;
@@ -21,14 +23,15 @@ public class CongeService {
         return congeRepository.findAll();
     }
 
-    public Optional<Conge> getCongeById(Integer id) {
-        return congeRepository.findByCodeConge(id);
+    public Conge getCongeById(Integer id) {
+        log.info("id de conge : {} ",id);
+        return congeRepository.findByCodeConge(id).get();
     }
 
     public Conge addConge(CongeDto congeDto) {
 
         Conge conge=new Conge();
-        conge.setCodeConge(Long.parseLong(congeDto.getCode_conge()));
+        conge.setCodeConge(Integer.parseInt(congeDto.getCode_conge()));
 
         conge.setType(congeDto.getType());
         conge.setDate_debut(congeDto.getDate_debut());
@@ -39,7 +42,7 @@ public class CongeService {
         return congeRepository.save(conge);
     }
 
-    public Conge updateConge(Integer id, Conge updatedConge) {
+    public Conge updateConge(Integer id, CongeDto updatedConge) {
         Optional<Conge> congeOptional = congeRepository.findByCodeConge(id);
         if (congeOptional.isPresent()) {
             Conge existingConge = congeOptional.get();

@@ -55,10 +55,17 @@ public class RetraiteService {
     }
 
     // Update
-    public Retraite updateRetraite(Integer id, Retraite updatedRetraite) {
+    public Retraite updateRetraite(Integer id, RetraiteDto updatedRetraite) {
         Optional<Retraite> existingRetraiteOptional = retraiteRepository.findById(id);
         if (existingRetraiteOptional.isPresent()) {
             Retraite existingRetraite = existingRetraiteOptional.get();
+            existingRetraite.setAgent(agentRepository.findById(updatedRetraite.getAgent()).get());
+            existingRetraite.setResidence(residenceRepository.findByCodeResidence(updatedRetraite.getCodeResidence()));
+            existingRetraite.setStatus(updatedRetraite.getStatus());
+            existingRetraite.setType_retraite(updatedRetraite.getTypeRetraite());
+            existingRetraite.setDate_depart_persivible(updatedRetraite.getDateDepartPreversible());
+            existingRetraite.setDate_demande(updatedRetraite.getDateDemande());
+            existingRetraite.setMotif_depart(updatedRetraite.getMotif());
             //existingRetraite.settype_retraite(updatedRetraite.gettype_retraite());
             // Mettez à jour d'autres attributs selon vos besoins
             return retraiteRepository.save(existingRetraite);
