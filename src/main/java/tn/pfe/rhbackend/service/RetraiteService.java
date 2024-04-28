@@ -31,7 +31,7 @@ public class RetraiteService {
     public Retraite createRetraite(RetraiteDto retraiteDto) {
         Retraite retraite=new Retraite();
         retraite.setAgent(agentRepository.findById(retraiteDto.getAgent()).get());
-        retraite.setResidence(residenceRepository.findByIdresidence(retraiteDto.getCodeResidence()));
+        retraite.setResidence(residenceRepository.findByCodeResidence(retraiteDto.getCodeResidence()));
         retraite.setStatus(retraiteDto.getStatus());
         retraite.setType_retraite(retraiteDto.getTypeRetraite());
         retraite.setDate_depart_persivible(retraiteDto.getDateDepartPreversible());

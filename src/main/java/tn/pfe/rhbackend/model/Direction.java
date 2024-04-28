@@ -16,10 +16,9 @@ import java.util.List;
 @Table(name = "direction ")
 public class Direction {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer iddirection ;
-    @Column(unique = true) // Assurez-vous que code_direction est unique
-    private  Integer code_direction ;
+    @Column(unique = true, length = 20)
+
+    private  Integer codeDirection ;
     private String libelle ;
 
     //

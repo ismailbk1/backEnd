@@ -15,9 +15,8 @@ import lombok.Setter;
     @Table(name = "bureau")
     public class Bureau {
         @Id
-        @GeneratedValue(strategy =GenerationType.IDENTITY)
-        private Integer idbureau;
-        private Integer code_bureau ;
+        @Column(unique = true, length = 20)
+        private Long codeBureau ;
         private String libelle ;
         private String chiffre_affaire;
         private String nb_agent;

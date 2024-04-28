@@ -19,7 +19,7 @@ public class ResidenceService {
     }
 
     public Optional<Residence> getResidenceByCode(Integer id) {
-        return residenceRepository.findById(id);
+        return Optional.ofNullable(residenceRepository.findByCodeResidence(id));
     }
 
     public Residence addResidence(Residence residence) {
@@ -27,8 +27,8 @@ public class ResidenceService {
     }
 
     public Residence updateResidence(Integer id, Residence residence) {
-        if (residenceRepository.existsById(id)) {
-            residence.setCode_residence(id);
+        if (residenceRepository.existsByCodeResidence(id)) {
+            residence.setCodeResidence(id);
             return residenceRepository.save(residence);
         } else {
             return null; // Handle error
@@ -36,7 +36,7 @@ public class ResidenceService {
     }
 
     public void deleteResidence(Integer code) {
-        residenceRepository.deleteById(code);
+        residenceRepository.deleteByCodeResidence(code);
     }
 }
 

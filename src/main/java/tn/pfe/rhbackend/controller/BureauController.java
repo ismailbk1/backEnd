@@ -31,7 +31,7 @@ public class BureauController {
     }
 
     @PutMapping("/{id}")
-    public Bureau updateBureau(@PathVariable Integer id, @RequestBody Bureau bureau) {
+    public Bureau updateBureau(@PathVariable Long id, @RequestBody Bureau bureau) {
         return bureauService.updateBureau(id, bureau);
     }
 

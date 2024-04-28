@@ -15,9 +15,8 @@ import java.util.List;
 @Table(name="residence")
 public class Residence {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idresidence ;
-    private Integer code_residence;
+    @Column(unique = true, length = 20)
+    private Integer codeResidence;
     private String libelle;
 
     @JsonIgnore
@@ -27,7 +26,7 @@ public class Residence {
     @JsonIgnore
     //résidence avec direction
     @ManyToOne
-    @JoinColumn(name = "code_direction", referencedColumnName = "code_direction")
+    @JoinColumn(name = "code_direction")
     private Direction direction;
 
     @JsonIgnore

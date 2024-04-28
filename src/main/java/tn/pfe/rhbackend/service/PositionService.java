@@ -19,7 +19,7 @@ public class PositionService {
     }
 
     public Optional<Position> getPositionById(Integer id) {
-        return positionRepository.findById(id);
+        return positionRepository.findByCodePosition(id);
     }
 
     public Position addPosition(Position position) {
@@ -27,8 +27,8 @@ public class PositionService {
     }
 
     public Position updatePosition(Integer id, Position position) {
-        if (positionRepository.existsById(id)) {
-            position.setCode_position(id);
+        if (positionRepository.existsByCodePosition(id)) {
+            position.setCodePosition(id);
             return positionRepository.save(position);
         } else {
             return null; // Handle error
@@ -36,6 +36,6 @@ public class PositionService {
     }
 
     public void deletePosition(Integer id) {
-        positionRepository.deleteById(id);
+        positionRepository.deleteByCodePosition(id);
     }
 }

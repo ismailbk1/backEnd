@@ -26,7 +26,7 @@ public class AgentController {
     }
 
     @GetMapping("/getAgentById/{id_agent}")
-    public Optional<Agent> getAgentById(@PathVariable Integer id_agent) {
+    public Optional<Agent> getAgentById(@PathVariable Long id_agent) {
         return agentService.getAgentByMatricule(id_agent);
     }
 

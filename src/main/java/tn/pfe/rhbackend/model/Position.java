@@ -17,9 +17,8 @@ import java.util.List;
 @Table(name = "position ")
 public class Position  {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idposition ;
-    private  Integer code_position ;
+    @Column(unique = true, length = 20)
+    private  Integer codePosition ;
     private String libelle ;
     @JsonIgnore
     @OneToMany(mappedBy = "position", cascade = CascadeType.ALL)

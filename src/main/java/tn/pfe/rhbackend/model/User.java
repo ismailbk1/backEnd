@@ -17,7 +17,7 @@ import java.util.List;
 public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long iduser;
     private String fullname;
     private String email;
     private String password;
@@ -25,7 +25,7 @@ public class User  {
 
 
 
-    @ManyToOne()
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 

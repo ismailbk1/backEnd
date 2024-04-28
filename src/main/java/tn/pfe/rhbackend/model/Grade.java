@@ -17,9 +17,8 @@ import java.util.List;
 @Table(name = "grade")
 public class Grade {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idgrade ;
-    private  Integer code_grade ;
+    @Column(unique = true, length = 20)
+    private  Integer codeGrade ;
     private String libelle ;
 @JsonIgnore
     //@OneToMany(mappedBy = "grade"), ce qui signifie qu'un objet Grade peut avoir plusieurs objets Agent

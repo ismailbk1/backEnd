@@ -30,8 +30,8 @@ public class AgentService {
         return agents;
     }
 
-    public Optional<Agent> getAgentByMatricule(Integer id_agent) {
-        return agentRepository.findById(id_agent);
+    public Optional<Agent> getAgentByMatricule(Long id_agent) {
+        return agentRepository.findByMatriculeAgent(id_agent);
     }
 
     public Agent addAgent(AgentDto agent) {
@@ -43,24 +43,24 @@ public class AgentService {
 
     private Agent mapToAgent(AgentDto agent) {
         Agent newAgent =new Agent();
-        newAgent.setMatricule_agent(agent.getMatricule_agent());
+ newAgent.setMatriculeAgent(Long.valueOf(agent.getMatricule_agent()));
         newAgent.setDate_entree_en_activite(agent.getDate_entree_en_activite());
         newAgent.setNomprenom(agent.getNomprenom());
-      //  newAgent.setSexe(agent.getSexe());
-        if (agent.getSexe()!= null && agent.getSexe().equals(Sexe.MALE)){
-            newAgent.setSexe(Sexe.MALE);
-        }
-        else
-        newAgent.setSexe(Sexe.FEMALE);
-
+     newAgent.setSexe(Sexe.valueOf(agent.getSexe()));
         newAgent.setDate_debut_position(agent.getDate_debut_position()) ;
         newAgent.setDate_naissance(agent.getDate_naissance());
-       Grade newGrade= gradeRepository.findByIdgrade(agent.getCode_grade());
-        Residence newResidence=residenceRepository.findByIdresidence(agent.getCode_residence());
-        Position newPotion =positionRepository.findByIdposition(agent.getCode_position());
-       newAgent.setGrade( newGrade);
-       newAgent.setPosition(newPotion);
-       newAgent.setResidence(newResidence);
+
+       Optional<Grade> newGrade= gradeRepository.findByCodeGrade(agent.getCode_grade());
+if(newGrade.isPresent())
+    newAgent.setGrade( newGrade.get());
+        Optional<Residence> newResidence= Optional.ofNullable(residenceRepository.findByCodeResidence(agent.getCode_residence()));
+        if(newResidence.isPresent())
+            newAgent.setResidence(newResidence.get());
+
+        Optional<Position> newPotion =positionRepository.findByCodePosition(agent.getCode_position());
+      if(newPotion.isPresent())
+       newAgent.setPosition(newPotion.get());
+
      newAgent.setSituation_familiale(SituationFamiliale.valueOf(agent.getSituation_familiale()));
      newAgent.setSituation_administrative(SituationAdmin.valueOf(agent.getSituation_administrative()));
       //System.out.println(newResidence);
@@ -69,11 +69,11 @@ return newAgent;
     }
 
     public Agent updateAgent(Integer id_agent, Agent agentToUpdate) {
-        Optional<Agent> existingAgentOptional = agentRepository.findById(id_agent);
+        Optional<Agent> existingAgentOptional = agentRepository.findByMatriculeAgent(Long.valueOf(id_agent));
         if (existingAgentOptional.isPresent()) {
             Agent existingAgent = existingAgentOptional.get();
             // Mettre à jour les champs de l'agent existant avec les nouvelles valeurs
-            existingAgent.setMatricule_agent(agentToUpdate.getMatricule_agent());
+           // existingAgent.setMatriculeAgent(agentToUpdate.getMatriculeAgent());
             existingAgent.setNomprenom(agentToUpdate.getNomprenom());
             existingAgent.setSexe(agentToUpdate.getSexe());
             existingAgent.setPosition(agentToUpdate.getPosition());

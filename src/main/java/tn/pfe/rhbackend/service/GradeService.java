@@ -19,7 +19,7 @@ public class GradeService {
     }
 
     public Optional<Grade> getGradeById(Integer id) {
-        return gradeRepository.findById(id);
+        return gradeRepository.findByCodeGrade(id);
     }
 
 
@@ -28,8 +28,8 @@ public class GradeService {
     }
 
     public Grade updateGrade(Integer id, Grade grade) {
-        if (gradeRepository.existsById(id)) {
-            grade.setCode_grade(id);
+        if (gradeRepository.existsByCodeGrade(id)) {
+            grade.setCodeGrade(id);
             return gradeRepository.save(grade);
         } else {
             return null; // Handle error

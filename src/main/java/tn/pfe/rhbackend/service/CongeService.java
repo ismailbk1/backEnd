@@ -18,7 +18,7 @@ public class CongeService {
     }
 
     public Optional<Conge> getCongeById(Integer id) {
-        return congeRepository.findById(id);
+        return congeRepository.findByCodeConge(id);
     }
 
     public Conge addConge(Conge conge) {
@@ -26,11 +26,11 @@ public class CongeService {
     }
 
     public Conge updateConge(Integer id, Conge updatedConge) {
-        Optional<Conge> congeOptional = congeRepository.findById(id);
+        Optional<Conge> congeOptional = congeRepository.findByCodeConge(id);
         if (congeOptional.isPresent()) {
             Conge existingConge = congeOptional.get();
             // Mettez à jour les champs nécessaires
-            existingConge.setCode_conge(updatedConge.getCode_conge());
+
             existingConge.setDate_debut(updatedConge.getDate_debut());
             existingConge.setDate_fin(updatedConge.getDate_fin());
             existingConge.setNb_jour(updatedConge.getNb_jour());

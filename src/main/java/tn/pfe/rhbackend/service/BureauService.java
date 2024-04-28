@@ -19,16 +19,16 @@ public class BureauService {
     }
 
     public Optional<Bureau> getBureauById(Integer id) {
-        return bureauRepository.findById(id);
+        return bureauRepository.findByCodeBureau(id);
     }
 
     public Bureau addBureau(Bureau bureau) {
         return bureauRepository.save(bureau);
     }
 
-    public Bureau updateBureau(Integer id, Bureau bureau) {
-        if (bureauRepository.existsById(id)) {
-            bureau.setIdbureau(id);
+    public Bureau updateBureau(Long id, Bureau bureau) {
+        if (bureauRepository.existsByCodeBureau(id)) {
+          //  bureau.setIdbureau(id);
             return bureauRepository.save(bureau);
         } else {
             return null; // Gérer l'erreur
@@ -36,7 +36,7 @@ public class BureauService {
     }
 
     public void deleteBureau(Integer id) {
-        bureauRepository.deleteById(id);
+        bureauRepository.deleteByCodeBureau(id);
     }
 }
 

@@ -19,10 +19,8 @@ import java.util.List;
 @Table(name="agent")
 public class Agent implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_agent ;
-    @Column(  unique = true , length = 20) //spécification du matricule doit étre unique
-    private Integer matricule_agent;
+    @Column(unique = true, length = 20) // spécification du matricule doit être unique
+    private Long matriculeAgent;
     private String nomprenom;
     @Enumerated(EnumType.STRING)
     private Sexe sexe;

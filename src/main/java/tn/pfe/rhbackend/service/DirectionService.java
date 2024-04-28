@@ -19,7 +19,7 @@ public class DirectionService {
     }
 
     public Optional<Direction> getDirectionById(Integer id) {
-        return directionRepository.findById(id);
+        return directionRepository.findByCodeDirection(id);
     }
 
     public Direction addDirection(Direction direction) {
@@ -27,8 +27,8 @@ public class DirectionService {
     }
 
     public Direction updateDirection(Integer id, Direction direction) {
-        if (directionRepository.existsById(id)) {
-            direction.setCode_direction(id);
+        if (directionRepository.existsByCodeDirection(id)) {
+            direction.setCodeDirection(id);
             return directionRepository.save(direction);
         } else {
             return null; // Handle error
@@ -36,6 +36,6 @@ public class DirectionService {
     }
 
     public void deleteDirection(Integer id) {
-        directionRepository.deleteById(id);
+        directionRepository.deleteByCodeDirection(id);
     }
 }

@@ -16,9 +16,8 @@ import java.time.LocalDate;
 @Table(name = "Conge")
 public class Conge {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idcongee;
-    private String code_conge;
+    @Column(unique = true, length = 20)
+    private Long codeConge;
     private LocalDate date_debut;
     private LocalDate date_fin;
     private Integer nb_jour;
