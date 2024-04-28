@@ -39,10 +39,12 @@ import java.util.Date;
     @JoinColumn(name = "code_residence")
     private Residence residence;
 
+
 @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "besoin_id")
     private Besoin besoin;
+
 
 
 
