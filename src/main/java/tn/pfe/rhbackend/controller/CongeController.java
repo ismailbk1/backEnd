@@ -2,7 +2,7 @@ package tn.pfe.rhbackend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.pfe.rhbackend.dto.CongeDto;
+import tn.pfe.rhbackend.dto.*;
 import tn.pfe.rhbackend.model.Conge;
 import tn.pfe.rhbackend.service.CongeService;
 

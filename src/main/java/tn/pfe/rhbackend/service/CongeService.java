@@ -2,7 +2,7 @@ package tn.pfe.rhbackend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.pfe.rhbackend.dto.CongeDto;
+import tn.pfe.rhbackend.dto.*;
 import tn.pfe.rhbackend.model.Conge;
 import tn.pfe.rhbackend.repository.AgentRepository;
 import tn.pfe.rhbackend.repository.CongeRepository;
@@ -28,12 +28,13 @@ public class CongeService {
     public Conge addConge(CongeDto congeDto) {
 
         Conge conge=new Conge();
-        conge.setCode_conge(congeDto.getCode_conge());
+        conge.setCodeConge(Long.parseLong(congeDto.getCode_conge()));
+
         conge.setType(congeDto.getType());
         conge.setDate_debut(congeDto.getDate_debut());
         conge.setNb_jour(congeDto.getNb_jour());
         conge.setDate_fin(congeDto.getDate_fin());
-        conge.setAgent(agentRepository.findById(congeDto.getAgent()).get());
+        conge.setAgent(agentRepository.findByMatriculeAgent(Long.parseLong(Integer.toString(congeDto.getAgent()))).get());
 
         return congeRepository.save(conge);
     }
