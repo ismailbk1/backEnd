@@ -48,7 +48,7 @@ public class RetraiteController {
 
     // Endpoint pour mettre à jour une retraite
     @PutMapping("/{id}")
-    public ResponseEntity<Retraite> updateRetraite(@PathVariable("id") Integer id, @RequestBody Retraite updatedRetraite) {
+    public ResponseEntity<Retraite> updateRetraite(@PathVariable("id") Integer id, @RequestBody RetraiteDto updatedRetraite) {
         Retraite retraite = retraiteService.updateRetraite(id, updatedRetraite);
         if (retraite != null) {
             return new ResponseEntity<>(retraite, HttpStatus.OK);

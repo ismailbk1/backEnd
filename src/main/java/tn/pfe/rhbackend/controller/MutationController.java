@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.pfe.rhbackend.dto.MutationDto;
 import tn.pfe.rhbackend.model.Mutation;
 import tn.pfe.rhbackend.service.MutationService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/mutations")
+@RequestMapping("/api/mutations")
 public class MutationController {
 
     private final MutationService mutationService;
@@ -21,7 +22,7 @@ public class MutationController {
     }
 
     @PostMapping
-    public ResponseEntity<Mutation> createMutation(@RequestBody Mutation mutation) {
+    public ResponseEntity<Mutation> createMutation(@RequestBody MutationDto mutation) {
         Mutation createdMutation = mutationService.createMutation(mutation);
         return new ResponseEntity<>(createdMutation, HttpStatus.CREATED);
     }
@@ -40,7 +41,7 @@ public class MutationController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Mutation> updateMutation(@PathVariable Integer id, @RequestBody Mutation updatedMutation) {
+    public ResponseEntity<Mutation> updateMutation(@PathVariable Integer id, @RequestBody MutationDto updatedMutation) {
         Mutation mutation = mutationService.updateMutation(id, updatedMutation);
         if (mutation != null) {
             return new ResponseEntity<>(mutation, HttpStatus.OK);
