@@ -20,7 +20,7 @@ public class PositionController {
         return positionService.getAllPositions();
     }
 
-    @GetMapping("/position/{id}")
+    @GetMapping("/getPositionById/{id}")
     public Optional<Position> getPositionById(@PathVariable Integer id) {
         return positionService.getPositionById(id);
     }

@@ -1,5 +1,6 @@
 package tn.pfe.rhbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +22,8 @@ public class Direction {
     private  Integer codeDirection ;
     private String libelle ;
 
-    //
 
+@JsonIgnore
     @OneToMany(mappedBy = "direction")
     private List<Residence> residences;
 }

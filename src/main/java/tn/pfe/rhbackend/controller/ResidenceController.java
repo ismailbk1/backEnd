@@ -20,9 +20,9 @@ public class ResidenceController {
         return residenceService.getAllResidences();
     }
 
-    @GetMapping("/{id_residence}")
-    public Optional<Residence> getResidenceByCode(@PathVariable Integer id) {
-        return residenceService.getResidenceByCode(id);
+    @GetMapping("/getResidenceById/{id_residence}")
+    public Optional<Residence> getResidenceByCode(@PathVariable Integer id_residence) {
+        return residenceService.getResidenceByCode(id_residence);
     }
 
     @PostMapping("/addResidence")
@@ -31,13 +31,13 @@ public class ResidenceController {
     }
 
     @PutMapping("/updateResidence/{id_residence}")
-    public Residence updateResidence(@PathVariable Integer id, @RequestBody Residence residence) {
-        return residenceService.updateResidence(id , residence);
+    public Residence updateResidence(@PathVariable Integer id_residence, @RequestBody Residence residence) {
+        return residenceService.updateResidence(id_residence , residence);
     }
 
     @DeleteMapping("/deleteResidence/{id_residence}")
-    public void deleteResidence(@PathVariable Integer id) {
-        residenceService.deleteResidence(id);
+    public void deleteResidence(@PathVariable Integer id_residence) {
+        residenceService.deleteResidence(id_residence);
     }
 }
 

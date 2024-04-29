@@ -1,8 +1,10 @@
 package tn.pfe.rhbackend.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.pfe.rhbackend.model.Residence;
+import tn.pfe.rhbackend.repository.DirectionRepository;
 import tn.pfe.rhbackend.repository.ResidenceRepository;
 
 import java.util.List;
@@ -13,6 +15,8 @@ public class ResidenceService {
 
     @Autowired
     private ResidenceRepository residenceRepository;
+    @Autowired
+    private DirectionRepository directionRepository;
 
     public List<Residence> getAllResidences() {
         return residenceRepository.findAll();
@@ -23,6 +27,7 @@ public class ResidenceService {
     }
 
     public Residence addResidence(Residence residence) {
+
         return residenceRepository.save(residence);
     }
 
@@ -35,6 +40,7 @@ public class ResidenceService {
         }
     }
 
+    @Transactional
     public void deleteResidence(Integer code) {
         residenceRepository.deleteByCodeResidence(code);
     }
