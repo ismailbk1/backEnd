@@ -23,7 +23,7 @@ public class Residence {
     //résidence avec agent
     @OneToMany(mappedBy = "residence", cascade = CascadeType.ALL)
     private List<Agent> agents;
-    @JsonIgnore
+  //  @JsonIgnore
     //résidence avec direction
     @ManyToOne
     @JoinColumn(name = "code_direction")

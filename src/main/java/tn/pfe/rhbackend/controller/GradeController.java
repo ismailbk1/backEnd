@@ -20,22 +20,22 @@ public class GradeController {
         return gradeService.getAllGrades();
     }
 
-    @GetMapping("/{id}") //juste grade selon code
+    @GetMapping("/getGradeById/{id}") //juste grade selon code
     public Optional<Grade> getGradeById(@PathVariable Integer id) {
         return gradeService.getGradeById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/addGrade")
     public Grade addGrade(@RequestBody Grade grade) {
         return gradeService.addGrade(grade);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateGrade/{id}")
     public Grade updateGrade(@PathVariable Integer id, @RequestBody Grade grade) {
         return gradeService.updateGrade(id, grade);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteGrade/{id}")
     public void deleteGrade(@PathVariable Integer id) {
         gradeService.deleteGrade(id);
     }

@@ -1,5 +1,6 @@
 package tn.pfe.rhbackend.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.pfe.rhbackend.model.Position;
@@ -34,8 +35,10 @@ public class PositionService {
             return null; // Handle error
         }
     }
+    @Transactional
 
     public void deletePosition(Integer id) {
+
         positionRepository.deleteByCodePosition(id);
     }
 }
